@@ -271,9 +271,7 @@ const isEditorFocused = ref(false);
 const status = ref('loading');
 const isCodeEditor = ref(false);
 const prefixInput = ref(props.options?.input ?? repoStore.config.object.media?.input ?? null);
-console.log('prefixInput', prefixInput)
 const prefixOutput = ref(props.isBundle ? props.folder : props.options?.output ?? repoStore.config.object.media?.output ?? null);
-console.log('prefixOutput', prefixOutput)
 const uploadPath = ref(props.options?.path ?? repoStore.config.object.media?.path ?? props.options?.input ?? repoStore.config.object.media?.input ?? '');
 const fileBrowserComponent = ref(null);
 
