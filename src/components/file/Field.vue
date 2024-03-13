@@ -24,6 +24,8 @@
               <component
                 :is="fieldComponent"
                 :field="field"
+                :isBundle="isBundle"
+                :folder="folder"
                 :modelValue="element"
                 @update:modelValue="value => model[field.name][index] = value"
                 :ref="el => fieldRefs[index] = el"
@@ -43,6 +45,8 @@
       <component
         :is="fieldComponent"
         :field="field"
+        :isBundle="isBundle"
+        :folder="folder"
         :modelValue="model[field.name]"
         @update:modelValue="model[field.name] = $event"
         ref="fieldRef"
@@ -92,7 +96,9 @@ const fieldComponents = {
 };
 
 const props = defineProps({
+  isBundle: Boolean,
   field: Object,
+  folder: String,
   model: [String, Number, Boolean, Array, Object]
 });
 

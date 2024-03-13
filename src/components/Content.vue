@@ -7,6 +7,7 @@
         :branch="branch"
         :name="name"
         :config="config"
+        :isBundle="schema.isBundle"
       />
     </template>
     <template v-else-if="schema?.type == 'file'">
@@ -19,6 +20,7 @@
         :path="schema.path"
         :format="schema.format"
         :title="schema.label || schema.name"
+        :isBundle="schema.isBundle"
       />
     </template>
   </template>
@@ -49,4 +51,5 @@ const props = defineProps({
 });
 
 const schema = computed(() => getSchemaByName(props.config, props.name));
+
 </script>

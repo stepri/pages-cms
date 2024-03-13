@@ -106,7 +106,7 @@
       <template v-if="model || model === ''">
         <template v-if="['yaml-frontmatter', 'json-frontmatter', 'toml-frontmatter', 'yaml', 'json', 'toml'].includes(mode)">
           <template v-if="schema && schema.fields">
-            <field v-for="field in schema.fields" :key="field.name" :field="field" :model="model" ref="fieldRefs"></field>
+            <field v-for="field in schema.fields" :key="field.name" :field="field" :model="model" :isBundle="isBundle || schema.isBundle" :folder="folder" ref="fieldRefs"></field>
           </template>
           <template v-else>
             <CodeMirror v-model="model" :language="extension" :validation="schemaValidation"/>
@@ -191,7 +191,8 @@ const props = defineProps({
   title: String,
   description: String,
   format: String,
-  isNew: Boolean
+  isNew: Boolean,
+  isBundle: Boolean
 });
 
 const status = ref('loading');

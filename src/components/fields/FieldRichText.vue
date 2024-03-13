@@ -4,6 +4,8 @@
     @update:modelValue="$emit('update:modelValue', $event)"
     :format="(field.options && field.options.format) || 'markdown'"
     :options="field.options || null"
+    :isBundle="isBundle"
+    :folder="folder"
   />
   <ul v-if="errors.length" class="mt-2 text-sm text-red-500 dark:text-red-400">
     <li v-for="error in errors" :key="error" class="flex gap-x-1 items-center">
@@ -24,6 +26,8 @@ const { validateRequired, validatePattern, validateLength } = useFieldValidation
 const props = defineProps({
   field: Object,
   modelValue: String,
+  isBundle: Boolean,
+  folder: String
 });
 
 const errors = ref([]);

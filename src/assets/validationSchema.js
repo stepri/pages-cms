@@ -97,6 +97,10 @@ const validationSchema = {
           "enum": ["collection", "file"],
           "errorMessage": "Property 'type' must be either 'collection' or 'file'."
         },
+        "isBundle": {
+          "type": "boolean",
+          "errorMessage": "Property 'isBundle' must be either 'true' or 'false'."
+        },
         "path": {
           "type": "string",
           "pattern": "^[^/].*[^/]$|^$",

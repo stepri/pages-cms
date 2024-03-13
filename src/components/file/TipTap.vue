@@ -186,7 +186,7 @@
           :repo="repoStore.repo"
           :branch="repoStore.branch"
           :root="props.options?.image?.input ?? repoStore.config.object.media?.input"
-          :defaultPath="props.options?.image?.path ?? repoStore.config.object.media?.path"
+          :defaultPath="props.isBundle ? props.folder : props.options?.image?.path ?? repoStore.config.object.media?.path"
           :filterByCategories="props.options?.image?.extensions ? undefined : [ 'image' ]"
           :filterByExtensions="props.options?.image?.extensions"
           :selected="selected"
@@ -249,7 +249,6 @@ const CodeMirror = defineAsyncComponent(() => import('@/components/file/CodeMirr
 const emit = defineEmits(['update:modelValue']);
 
 const repoStore = inject('repoStore', { owner: null, repo: null, branch: null, config: null, details: null });
-
 const props = defineProps({
   owner: String,
   repo: String,
@@ -258,6 +257,8 @@ const props = defineProps({
   modelValue: String,
   format: { type: String, default: 'markdown' },
   private: { type: Boolean, default: false },
+  isBundle: Boolean,
+  folder: String
 });
 
 const linkModal = ref(null);
@@ -270,7 +271,9 @@ const isEditorFocused = ref(false);
 const status = ref('loading');
 const isCodeEditor = ref(false);
 const prefixInput = ref(props.options?.input ?? repoStore.config.object.media?.input ?? null);
-const prefixOutput = ref(props.options?.output ?? repoStore.config.object.media?.output ?? null);
+console.log('prefixInput', prefixInput)
+const prefixOutput = ref(props.isBundle ? props.folder : props.options?.output ?? repoStore.config.object.media?.output ?? null);
+console.log('prefixOutput', prefixOutput)
 const uploadPath = ref(props.options?.path ?? repoStore.config.object.media?.path ?? props.options?.input ?? repoStore.config.object.media?.input ?? '');
 const fileBrowserComponent = ref(null);
 

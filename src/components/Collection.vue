@@ -233,7 +233,8 @@ const props = defineProps({
   branch: String,
   name: String,
   config: Object,
-  path: String
+  path: String,
+  isBundle: Boolean
 });
 
 const status = ref('loading');
