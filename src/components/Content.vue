@@ -51,5 +51,4 @@ const props = defineProps({
 });
 
 const schema = computed(() => getSchemaByName(props.config, props.name));
-
 </script>
