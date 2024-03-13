@@ -137,8 +137,6 @@ const htmlSwapPrefix = (html, from, to, relative = false) => {
     });
   }
 
-  console.log('htmlSwapPrefix.newHtml', newHtml)
-
   return newHtml;
 }
 
